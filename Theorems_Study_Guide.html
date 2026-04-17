@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Theorems Study Guide - 18 Essential Theorems</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --secondary: #059669;
+            --accent: #f59e0b;
+            --danger: #dc2626;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #f1f5f9 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.15);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1.5rem;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 2px solid var(--border);
+            color: var(--text-dark);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Theorem Cards */
+        .theorem-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary);
+            animation: fadeInUp 0.5s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .theorem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .theorem-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .theorem-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theorem-badge {
+            font-size: 0.7rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-header h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Easy Explanation */
+        .easy-explanation {
+            background: #f0fdf4;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .easy-explanation strong {
+            color: var(--success);
+        }
+
+        /* Formal Definition */
+        .formal-definition {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        /* Proof Section */
+        .proof-section {
+            background: #faf5ff;
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .proof-section h4 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .proof-step {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            border-left: 2px solid #e9d5ff;
+        }
+
+        .proof-step strong {
+            color: #a855f7;
+        }
+
+        /* Memory Trick */
+        .memory-trick {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .memory-trick strong {
+            color: var(--accent);
+        }
+
+        .memory-trick em {
+            font-style: italic;
+            color: #b45309;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: #f3f4f6;
+            border-left: 4px solid var(--text-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .example-box strong {
+            color: var(--text-dark);
+        }
+
+        /* Text Styles */
+        p {
+            margin: 1rem 0;
+            color: var(--text-dark);
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--primary);
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .nav-btn {
+                break-inside: avoid;
+            }
+            .theorem-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .theorem-title {
+                font-size: 1.3rem;
+                flex-wrap: wrap;
+            }
+            .theorem-card {
+                padding: 1.5rem;
+            }
+            .nav-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Utility Classes */
+        .highlight {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Complete Theorems Study Guide</h1>
+        <p>Master 18 Essential Calculus & Analysis Theorems with Simplified Explanations, Proofs & Memory Tricks</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <span class="nav-label">📌 Quick Navigation</span>
+            <div class="nav-grid">
+                <a href="#theorem1" class="nav-btn">1. Uniqueness of Limit</a>
+                <a href="#theorem2" class="nav-btn">2. Bounded Sequence</a>
+                <a href="#theorem3" class="nav-btn">3. Squeeze Theorem</a>
+                <a href="#theorem4" class="nav-btn">4. Monotone Sequences</a>
+                <a href="#theorem5" class="nav-btn">5. Bounded × Infinitesimal</a>
+                <a href="#theorem6" class="nav-btn">6. Harmonic Series</a>
+                <a href="#theorem7" class="nav-btn">7. Non-Neg Series</a>
+                <a href="#theorem8" class="nav-btn">8. Bolzano (Zeros)</a>
+                <a href="#theorem9" class="nav-btn">9. Derivability-Continuity</a>
+                <a href="#theorem10" class="nav-btn">10. Fermat's Theorem</a>
+                <a href="#theorem11" class="nav-btn">11. Rolle's Theorem</a>
+                <a href="#theorem12" class="nav-btn">12. Lagrange's Theorem</a>
+                <a href="#theorem13" class="nav-btn">13. Monotonicity Criterion</a>
+                <a href="#theorem14" class="nav-btn">14. Series Convergence</a>
+                <a href="#theorem15" class="nav-btn">15. Geometric Series</a>
+                <a href="#theorem16" class="nav-btn">16. Harmonic (Alt Proof)</a>
+                <a href="#theorem17" class="nav-btn">17. Fundamental Integral</a>
+                <a href="#theorem18" class="nav-btn">18. Bolzano (General)</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- THEOREM 1 -->
+        <div class="theorem-card" id="theorem1">
+            <div class="theorem-number">1</div>
+            <div class="theorem-title">
+                Uniqueness of the Limit Theorem
+                <span class="theorem-badge">Sequences</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> A sequence cannot converge to two different numbers at the same time. If a sequence has a limit, that limit is unique and one-of-a-kind. It's like saying a person can only have one true biological mother—you can't have two different mothers!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If a sequence {aₙ} converges to a limit L and also converges to another limit M, then L = M.
+
+                More precisely: If lim(n→∞) aₙ = L and lim(n→∞) aₙ = M, then L = M.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof by Contradiction:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Assume the sequence {aₙ} converges to two different limits: L and M with L ≠ M.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Choose ε = |L - M|/2 > 0 (since L ≠ M).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Since lim aₙ = L, there exists N₁ such that for all n > N₁: |aₙ - L| < ε
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Since lim aₙ = M, there exists N₂ such that for all n > N₂: |aₙ - M| < ε
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> For n > max(N₁, N₂), both inequalities hold simultaneously. By the triangle inequality:
+                    |L - M| = |L - aₙ + aₙ - M| ≤ |L - aₙ| + |aₙ - M| < ε + ε = |L - M|
+                </div>
+                <div class="proof-step">
+                    <strong>Step 6:</strong> This gives |L - M| < |L - M|, which is a contradiction!
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore, L = M. The limit is unique. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "ONE-LIMIT RULE"</strong><br>
+                Think of it as the "<em>monogamous limit</em>" — your sequence is faithful to ONE limit, no two-timing allowed! 
+                <br><br>
+                <strong>Acronym:</strong> <em>U.L.T.</em> = <strong>U</strong>nique <strong>L</strong>imit <strong>T</strong>heorem
+                <br>Remember: "<em>Unity</em> means <em>one</em> limit"
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> The sequence aₙ = 1/n converges to 0 (and only 0). It cannot also converge to 0.5 or any other number.
+            </div>
+        </div>
+
+        <!-- THEOREM 2 -->
+        <div class="theorem-card" id="theorem2">
+            <div class="theorem-number">2</div>
+            <div class="theorem-title">
+                A Convergent Sequence is Bounded
+                <span class="theorem-badge">Sequences</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a sequence converges (approaches a specific number), then it cannot "escape to infinity." The terms of the sequence must stay within some fixed boundaries. It's like saying if you're walking toward a door (convergence), you can't be running away into infinity at the same time!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If a sequence {aₙ} converges to some limit L, then there exist constants m and M such that m ≤ aₙ ≤ M for all n ∈ ℕ.
+
+                In other words: ∃ M > 0 such that |aₙ| ≤ M for all n.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Assume {aₙ} converges to L. By definition of convergence, for ε = 1:
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> There exists N such that for all n > N: |aₙ - L| < 1
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> This means: L - 1 < aₙ < L + 1 for all n > N
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> For the first N terms (a₁, a₂, ..., aₙ), they form a finite set, so they have a minimum (m₁) and maximum (M₁).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Set m = min{m₁, L - 1} and M = max{M₁, L + 1}
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Now m ≤ aₙ ≤ M for ALL n. The sequence is bounded! ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "CONVERGE = CAGE"</strong><br>
+                When a sequence <em>converges</em>, it's trapped in a <em>cage</em> (bounded region). You can't converge AND run to infinity!
+                <br><br>
+                <strong>Visual:</strong> Think of a funnel — the sequence gets narrower and narrower, staying within bounds.
+                <br><strong>Key Phrase:</strong> "<em>Convergence = Confinement</em>"
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> aₙ = 1/n converges to 0. All terms satisfy 0 < aₙ ≤ 1, so it's bounded between 0 and 1.
+            </div>
+        </div>
+
+        <!-- THEOREM 3 -->
+        <div class="theorem-card" id="theorem3">
+            <div class="theorem-number">3</div>
+            <div class="theorem-title">
+                Squeeze Theorem (Carabinieri's Theorem)
+                <span class="theorem-badge">Sequences</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If your sequence is "squeezed" between two other sequences that both converge to the same value, then your sequence MUST also converge to that value. It's like being stuck between two walls that are closing in on the same point—you have no choice but to go to that point!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let {aₙ}, {bₙ}, and {cₙ} be sequences. If:
+                1. aₙ ≤ bₙ ≤ cₙ for all n ≥ N (some N)
+                2. lim(n→∞) aₙ = L
+                3. lim(n→∞) cₙ = L
+
+                Then: lim(n→∞) bₙ = L
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let ε > 0 be given (arbitrary).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Since lim aₙ = L, ∃ N₁ such that for n > N₁: |aₙ - L| < ε
+                    This means: L - ε < aₙ < L + ε
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Since lim cₙ = L, ∃ N₂ such that for n > N₂: |cₙ - L| < ε
+                    This means: L - ε < cₙ < L + ε
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Let N = max(N₁, N₂). For all n > N:
+                    L - ε < aₙ ≤ bₙ ≤ cₙ < L + ε
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Therefore: L - ε < bₙ < L + ε, which means |bₙ - L| < ε
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Since this holds for all ε > 0, lim bₙ = L ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "SANDWICH THEOREM"</strong><br>
+                Your sequence is the <em>meat</em> in a sandwich, squeezed between two <em>bread slices</em> (upper and lower bounds). If the slices converge to the same point, the meat must too!
+                <br><br>
+                <strong>Visual Image:</strong> 🥪 SANDWICH 🥪
+                <br><strong>Key:</strong> <em>Squeeze → Same Limit</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> Show lim(ncos(n)/n²) = 0.
+                <br>Since -1 ≤ cos(n) ≤ 1:
+                <br>-1/n ≤ ncos(n)/n² ≤ 1/n
+                <br>Both -1/n and 1/n converge to 0, so the middle term converges to 0.
+            </div>
+        </div>
+
+        <!-- THEOREM 4 -->
+        <div class="theorem-card" id="theorem4">
+            <div class="theorem-number">4</div>
+            <div class="theorem-title">
+                Regularity Theorem of Monotone Sequences
+                <span class="theorem-badge">Sequences</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a sequence always goes up (or always goes down) AND stays within bounds, it must converge to some limit. Think of climbing a ladder—if you keep going up but the roof is finite, you'll reach the roof and stop!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If a sequence {aₙ} is:
+                1. INCREASING (monotone increasing): a₁ ≤ a₂ ≤ a₃ ≤ ...
+                2. BOUNDED ABOVE: aₙ ≤ M for all n
+
+                Then {aₙ} converges to its supremum (least upper bound).
+
+                Similarly for DECREASING and BOUNDED BELOW sequences.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof Sketch</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Intuitive Proof (uses Completeness Axiom):</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> The sequence is bounded above, so by the Completeness Axiom, the set {aₙ : n ∈ ℕ} has a least upper bound (supremum) L.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> For any ε > 0, L - ε is not an upper bound (by minimality of L).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Therefore, ∃ N such that aₙ > L - ε.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Since the sequence is increasing: for all n > N, we have aₙ ≥ aₙ > L - ε.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Also, aₙ ≤ L (L is an upper bound).
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> L - ε < aₙ ≤ L < L + ε, so |aₙ - L| < ε. Thus lim aₙ = L ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "MONOTONE + BOUNDED = CONVERGENT"</strong><br>
+                <em>M.B. = M.C.</em> (Monotone + Bounded = Must Converge)
+                <br><br>
+                <strong>Visual:</strong> An escalator that goes UP or DOWN but has a ceiling/floor will always reach its destination!
+                <br><strong>Remember:</strong> <em>"One direction + one boundary = guaranteed destination"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> aₙ = (1 - 1/n)
+                <br>This is increasing (gets larger each time) and bounded above by 1.
+                <br>Therefore it converges to its supremum, which is 1.
+            </div>
+        </div>
+
+        <!-- THEOREM 5 -->
+        <div class="theorem-card" id="theorem5">
+            <div class="theorem-number">5</div>
+            <div class="theorem-title">
+                Product of Bounded Sequence × Infinitesimal Sequence
+                <span class="theorem-badge">Sequences</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If you multiply a "nice, bounded" sequence by a sequence that goes to zero (infinitesimal), the result goes to zero. It's like multiplying any finite number by smaller and smaller numbers—you always get closer to zero!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If {aₙ} is BOUNDED (∃ M > 0: |aₙ| ≤ M for all n)
+                And {bₙ} is INFINITESIMAL (lim bₙ = 0)
+
+                Then: lim(aₙ · bₙ) = 0
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let ε > 0 be given.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Since {aₙ} is bounded: |aₙ| ≤ M for some M > 0 and all n.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Since {bₙ} is infinitesimal: lim bₙ = 0. Therefore, ∃ N such that for n > N:
+                    |bₙ| < ε/M
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> For n > N:
+                    |aₙ · bₙ| = |aₙ| · |bₙ| ≤ M · (ε/M) = ε
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Since this holds for all ε > 0, lim(aₙbₙ) = 0 ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "ANYTHING × ZERO = ZERO"</strong><br>
+                Even if one sequence is bounded and "wild," multiplying by something that goes to 0 kills it off!
+                <br><br>
+                <strong>Formula:</strong> <em>Bounded · Infinitesimal = Infinitesimal</em>
+                <br><strong>Remember:</strong> <em>"Infinity times something tiny is still tiny"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> aₙ = sin(n) is bounded (|sin(n)| ≤ 1), bₙ = 1/n → 0.
+                <br>Therefore: lim(sin(n)/n) = 0
+            </div>
+        </div>
+
+        <!-- THEOREM 6 -->
+        <div class="theorem-card" id="theorem6">
+            <div class="theorem-number">6</div>
+            <div class="theorem-title">
+                The Harmonic Series is Divergent
+                <span class="theorem-badge">Series</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> The harmonic series 1 + 1/2 + 1/3 + 1/4 + ... does NOT have a finite sum. Even though the terms get smaller, there are infinitely many of them, and together they add up to infinity. It's like taking tiny steps but never stopping—eventually you'll walk infinitely far!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                The Harmonic Series: ∑(n=1 to ∞) 1/n = 1 + 1/2 + 1/3 + 1/4 + ...
+
+                DIVERGES. The partial sums Sₙ = ∑(k=1 to n) 1/k → ∞
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof (Integral Test Method)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof by Grouping (Cauchy's Method):</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Consider partial sums and group the terms:
+                    <br>S₂ₙ = 1 + 1/2 + (1/3 + 1/4) + (1/5 + 1/6 + 1/7 + 1/8) + ...
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> In each group, each term is ≥ the last term in the group:
+                    <br>1/3 + 1/4 ≥ 1/4 + 1/4 = 2/4 = 1/2
+                    <br>1/5 + 1/6 + 1/7 + 1/8 ≥ 1/8 + 1/8 + 1/8 + 1/8 = 4/8 = 1/2
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Continuing this pattern:
+                    <br>S₂ₙ ≥ 1 + 1/2 + 1/2 + 1/2 + ... (with ⌊log₂(n)⌋ copies of 1/2)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> As n → ∞, the number of 1/2 terms grows without bound.
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> S₂ₙ → ∞, so the harmonic series diverges. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "HARMONIC = HARMONY FAILS"</strong><br>
+                Despite being "nice" and decreasing, the Harmonic Series is <em>stubborn</em> and diverges!
+                <br><br>
+                <strong>Key Phrase:</strong> <em>"Slow decrease, infinite climb"</em>
+                <br><strong>Remember:</strong> <em>H (Harmonic) = ∞ (Infinity)</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Note:</strong> This is counterintuitive because the terms 1/n → 0, yet the sum diverges. Many students expect convergence because the terms shrink!
+            </div>
+        </div>
+
+        <!-- THEOREM 7 -->
+        <div class="theorem-card" id="theorem7">
+            <div class="theorem-number">7</div>
+            <div class="theorem-title">
+                Regularity of Series with Non-Negative Terms
+                <span class="theorem-badge">Series</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If all terms in a series are non-negative, the series either converges (to a finite sum) OR diverges to infinity. There's no "weird oscillation"—the sequence of partial sums either climbs to a plateau or keeps climbing forever.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If {aₙ} is a sequence with aₙ ≥ 0 for all n, then the series ∑ aₙ either:
+                1. Converges to a finite limit L, OR
+                2. Diverges to +∞ (lim Sₙ = +∞)
+
+                There is no oscillation or indeterminacy.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let Sₙ = ∑(k=1 to n) aₖ be the n-th partial sum.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Since aₙ ≥ 0 for all n:
+                    S₁ ≤ S₂ ≤ S₃ ≤ ... (the sequence is increasing/monotone)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> By the Monotone Sequence Theorem, {Sₙ} either:
+                    <br>- Is bounded above → converges to its supremum, OR
+                    <br>- Is unbounded → diverges to +∞
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> No oscillation or weird behavior possible. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "NON-NEGATIVE = NO OSCILLATION"</strong><br>
+                All positive terms means all upward steps. You can only go up or plateau, never down!
+                <br><br>
+                <strong>Key Phrase:</strong> <em>"No negatives, no zigzag"</em>
+                <br><strong>Remember:</strong> <em>"≥ 0 = monotone = regular"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Implication:</strong> This theorem justifies using comparison tests and other convergence criteria for non-negative series, because we know the behavior must be "regular."
+            </div>
+        </div>
+
+        <!-- THEOREM 8 -->
+        <div class="theorem-card" id="theorem8">
+            <div class="theorem-number">8</div>
+            <div class="theorem-title">
+                Bolzano's Theorem (Existence of Zeros for Continuous Functions)
+                <span class="theorem-badge">Continuity</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a continuous function starts positive and ends negative (or vice versa) on an interval, it MUST cross zero somewhere in between. You can't jump over the x-axis without touching it—that would be a break in continuity!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let f be continuous on [a, b] with f(a) and f(b) having opposite signs.
+                That is: f(a) · f(b) < 0
+
+                Then: ∃ c ∈ (a, b) such that f(c) = 0
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof Sketch (Bisection Method)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof by Bisection:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> WLOG assume f(a) < 0 and f(b) > 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Start with interval [a₁, b₁] = [a, b]. Let m₁ = (a₁ + b₁)/2.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> If f(m₁) = 0, we're done! Otherwise:
+                    <br>- If f(m₁) < 0, set [a₂, b₂] = [m₁, b₁]
+                    <br>- If f(m₁) > 0, set [a₂, b₂] = [a₁, m₁]
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Repeat this process indefinitely. We get nested intervals [aₙ, bₙ] where f(aₙ) < 0 and f(bₙ) > 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> The lengths |bₙ - aₙ| → 0. By the Nested Interval Property, ∃ unique c ∈ ∩[aₙ, bₙ].
+                </div>
+                <div class="proof-step">
+                    <strong>Step 6:</strong> By continuity of f: f(c) = lim f(aₙ) ≤ 0 and f(c) = lim f(bₙ) ≥ 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore f(c) = 0. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "CONTINUOUS MUST CROSS ZERO"</strong><br>
+                <em>B</em> = <strong>B</strong>olzano
+                <br><em>Z</em> = <strong>Z</strong>ero crossing
+                <br><em>T</em> = <strong>T</strong>heorem
+                <br><br>
+                <strong>Visual:</strong> Draw a continuous curve from above the x-axis to below it—it MUST touch! ✓
+                <br><strong>Key:</strong> <em>"Opposite signs → must cross"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = x³ - 2 on [1, 2]
+                <br>f(1) = -1 < 0, f(2) = 6 > 0
+                <br>Therefore ∃ c ∈ (1, 2) where f(c) = 0 (namely c = ∛2 ≈ 1.26)
+            </div>
+        </div>
+
+        <!-- THEOREM 9 -->
+        <div class="theorem-card" id="theorem9">
+            <div class="theorem-number">9</div>
+            <div class="theorem-title">
+                Derivability Implies Continuity
+                <span class="theorem-badge">Derivatives</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a function is differentiable (has a derivative) at a point, it MUST be continuous at that point. You can't have a smooth curve (with a well-defined slope) that has a jump or break. Differentiability is a stronger condition than continuity!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If f is differentiable at a point x₀ (i.e., f'(x₀) exists), then f is continuous at x₀.
+
+                Equivalently: Differentiability ⟹ Continuity
+                (But not vice versa!)
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Assume f is differentiable at x₀. Then:
+                    f'(x₀) = lim(h→0) [f(x₀ + h) - f(x₀)]/h exists and is finite.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> We need to show: lim(h→0) [f(x₀ + h) - f(x₀)] = 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Consider:
+                    <br>f(x₀ + h) - f(x₀) = [f(x₀ + h) - f(x₀)]/h · h
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> As h → 0:
+                    <br>- [f(x₀ + h) - f(x₀)]/h → f'(x₀) (by definition of derivative)
+                    <br>- h → 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> By the product rule for limits:
+                    <br>lim(h→0) [f(x₀ + h) - f(x₀)] = f'(x₀) · 0 = 0
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore f is continuous at x₀. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "SMOOTH ⟹ NO JUMPS"</strong><br>
+                <em>D</em> = <strong>D</strong>erivable (smooth)
+                <br><em>C</em> = <strong>C</strong>ontinuous (no jumps)
+                <br><br>
+                <strong>Key Phrase:</strong> <em>"If you can draw a tangent line, you can't have breaks"</em>
+                <br><strong>Remember:</strong> <em>"Derivative ⟹ No Continuity FAIL"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Counterexample:</strong> f(x) = |x| is continuous at 0 but NOT differentiable at 0 (the slope is different from left and right).
+                <br>This shows the converse is FALSE!
+            </div>
+        </div>
+
+        <!-- THEOREM 10 -->
+        <div class="theorem-card" id="theorem10">
+            <div class="theorem-number">10</div>
+            <div class="theorem-title">
+                Fermat's Theorem
+                <span class="theorem-badge">Derivatives</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a function reaches a local maximum or minimum at an interior point, and the function is differentiable there, then the derivative MUST be zero at that point. At peaks and valleys, the tangent line is flat (horizontal)!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let f be defined on an interval (a, b) and suppose x₀ ∈ (a, b) is a local extremum (maximum or minimum).
+
+                If f is differentiable at x₀, then: f'(x₀) = 0
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof (Local Maximum Case)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Assume x₀ is a local maximum. So ∃ δ > 0 such that f(x) ≤ f(x₀) for all x ∈ (x₀ - δ, x₀ + δ).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> For h ∈ (0, δ): f(x₀ + h) ≤ f(x₀), so f(x₀ + h) - f(x₀) ≤ 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Therefore: [f(x₀ + h) - f(x₀)]/h ≤ 0 (dividing by positive h)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Taking the limit as h → 0⁺:
+                    <br>f'(x₀) = lim(h→0⁺) [f(x₀ + h) - f(x₀)]/h ≤ 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> For h ∈ (-δ, 0): f(x₀ + h) ≤ f(x₀), so [f(x₀ + h) - f(x₀)]/h ≥ 0 (negative/negative)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 6:</strong> Taking the limit as h → 0⁻:
+                    <br>f'(x₀) = lim(h→0⁻) [f(x₀ + h) - f(x₀)]/h ≥ 0
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> We have f'(x₀) ≤ 0 AND f'(x₀) ≥ 0, so f'(x₀) = 0 ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "PEAKS AND VALLEYS ARE FLAT"</strong><br>
+                <em>F</em> = <strong>F</strong>ermat
+                <em>M</em> = <strong>M</strong>ax/Min
+                <em>T</em> = <strong>T</strong>angent is ZERO
+                <br><br>
+                <strong>Visual:</strong> 🏔️ At the mountain peak, the slope is 0. ⛰️
+                <br><strong>Key:</strong> <em>"Local extremum → f' = 0"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = -x² + 4 has a maximum at x = 0.
+                <br>f'(x) = -2x, so f'(0) = 0. ✓
+            </div>
+        </div>
+
+        <!-- THEOREM 11 -->
+        <div class="theorem-card" id="theorem11">
+            <div class="theorem-number">11</div>
+            <div class="theorem-title">
+                Rolle's Theorem
+                <span class="theorem-badge">Derivatives</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a smooth curve starts and ends at the SAME HEIGHT and is continuous/differentiable, then somewhere in between, the curve must have a flat spot (zero slope). It's impossible to go from point A back to the same height without having a peak or valley!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let f be continuous on [a, b] and differentiable on (a, b).
+
+                If f(a) = f(b), then: ∃ c ∈ (a, b) such that f'(c) = 0
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> By the Extreme Value Theorem, f attains its maximum M and minimum m on [a, b].
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Case 1: If m = M, then f is constant. So f'(x) = 0 everywhere, and we're done.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Case 2: If m < M (f is not constant), then f attains one of them at an interior point c ∈ (a, b).
+                    <br>(This is because f(a) = f(b), so at least one extremum must be in the interior.)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> By Fermat's Theorem, if f has a local extremum at c and is differentiable there, then f'(c) = 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore ∃ c ∈ (a, b) where f'(c) = 0 ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "ROUND TRIP = FLAT SOMEWHERE"</strong><br>
+                <em>R</em> = <strong>R</strong>olle
+                <em>S</em> = <strong>S</strong>lope = zero
+                <em>E</em> = <strong>E</strong>ndpoints are equal
+                <br><br>
+                <strong>Visual:</strong> Start and end at the same point → must flatten in between! 🎢
+                <br><strong>Key:</strong> <em>"Same height at ends → zero slope somewhere"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = x³ - x on [-1, 1]
+                <br>f(-1) = -(-1) - (-1) = -1 + 1 = -1, f(1) = 1 - 1 = 0... Wait, not equal.
+                <br><br>Better: f(x) = x² - 1 on [-1, 1]
+                <br>f(-1) = 0, f(1) = 0. So ∃ c where f'(c) = 0.
+                <br>f'(x) = 2x, so c = 0. ✓
+            </div>
+        </div>
+
+        <!-- THEOREM 12 -->
+        <div class="theorem-card" id="theorem12">
+            <div class="theorem-number">12</div>
+            <div class="theorem-title">
+                Lagrange's Theorem (Mean Value Theorem)
+                <span class="theorem-badge">Derivatives</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If you drive from point A to point B, your average speed for the trip equals your instantaneous speed at some point in between. Somewhere on your journey, you must have been going exactly the average speed!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let f be continuous on [a, b] and differentiable on (a, b).
+
+                Then: ∃ c ∈ (a, b) such that f'(c) = [f(b) - f(a)]/(b - a)
+
+                The right side is the "average rate of change" (secant slope).
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof via Rolle's Theorem:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Define an auxiliary function:
+                    <br>g(x) = f(x) - [f(b) - f(a)]/(b - a) · (x - a)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> This is f(x) minus the secant line. Check the endpoints:
+                    <br>g(a) = f(a) - 0 = f(a)
+                    <br>g(b) = f(b) - [f(b) - f(a)] = f(a)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> So g(a) = g(b). Also, g is continuous on [a, b] and differentiable on (a, b).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> By Rolle's Theorem: ∃ c ∈ (a, b) where g'(c) = 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Now: g'(x) = f'(x) - [f(b) - f(a)]/(b - a)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 6:</strong> So g'(c) = 0 ⟹ f'(c) = [f(b) - f(a)]/(b - a) ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "AVERAGE SPEED IS ACTUAL SPEED SOMEWHERE"</strong><br>
+                <em>M</em> = <strong>M</strong>ean Value
+                <em>V</em> = <strong>V</strong>alue Theorem
+                <br><br>
+                <strong>Visual:</strong> 🚗 Speedometer shows average at some point!
+                <br><strong>Formula:</strong> <em>f'(c) = slope of secant line</em>
+                <br><strong>Key:</strong> <em>"Average slope = tangent slope at c"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = x² on [1, 3]
+                <br>Average rate of change: [f(3) - f(1)]/(3 - 1) = [9 - 1]/2 = 4
+                <br>f'(x) = 2x, so f'(c) = 4 means c = 2. ✓
+            </div>
+        </div>
+
+        <!-- THEOREM 13 -->
+        <div class="theorem-card" id="theorem13">
+            <div class="theorem-number">13</div>
+            <div class="theorem-title">
+                The Monotonicity Criterion for Derivable Functions
+                <span class="theorem-badge">Derivatives</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> The sign of the derivative tells you whether the function is going up or down. If f'(x) > 0, the function is increasing. If f'(x) < 0, it's decreasing. The derivative is the "speedometer" that tells you the direction of motion!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Let f be continuous on [a, b] and differentiable on (a, b).
+
+                1. If f'(x) > 0 for all x ∈ (a, b), then f is STRICTLY INCREASING on [a, b]
+                2. If f'(x) < 0 for all x ∈ (a, b), then f is STRICTLY DECREASING on [a, b]
+                3. If f'(x) = 0 for all x ∈ (a, b), then f is CONSTANT on [a, b]
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof (Increasing Case)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof using Mean Value Theorem:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let x₁ < x₂ be two points in [a, b].
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> By MVT applied to [x₁, x₂]:
+                    <br>∃ c ∈ (x₁, x₂) such that f'(c) = [f(x₂) - f(x₁)]/(x₂ - x₁)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> By assumption: f'(c) > 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Since x₂ - x₁ > 0, we have:
+                    <br>[f(x₂) - f(x₁)]/(x₂ - x₁) = f'(c) > 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Therefore: f(x₂) - f(x₁) > 0, i.e., f(x₁) < f(x₂).
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> f is strictly increasing. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "POSITIVE DERIVATIVE = GOING UP"</strong><br>
+                <em>+f' = ↑ (increasing)</em>
+                <br><em>-f' = ↓ (decreasing)</em>
+                <br><em>0f' = ➜ (constant)</em>
+                <br><br>
+                <strong>Visual:</strong> Think of a slope indicator! Positive = uphill, Negative = downhill.
+                <br><strong>Key:</strong> <em>"Derivative sign = function direction"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = x³ on ℝ
+                <br>f'(x) = 3x²
+                <br>Note: f'(x) ≥ 0 everywhere (and = 0 only at x = 0), so f is increasing (not strictly everywhere, but on any interval).
+            </div>
+        </div>
+
+        <!-- THEOREM 14 -->
+        <div class="theorem-card" id="theorem14">
+            <div class="theorem-number">14</div>
+            <div class="theorem-title">
+                Necessary Condition for the Convergence of a Series
+                <span class="theorem-badge">Series</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> If a series converges (adds up to a finite sum), then the individual terms MUST shrink to zero. If the terms don't go to zero, the series definitely diverges. Think: if you're adding terms that don't shrink, you're constantly adding significant amounts—you can't get a finite sum!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                If the series ∑(n=1 to ∞) aₙ CONVERGES, then: lim(n→∞) aₙ = 0
+
+                Contrapositive (more useful): If lim aₙ ≠ 0 (or doesn't exist), then ∑ aₙ DIVERGES.
+
+                IMPORTANT: The converse is FALSE! If aₙ → 0, the series may still diverge.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let Sₙ = ∑(k=1 to n) aₖ be the n-th partial sum.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Assume ∑ aₙ converges. Then ∃ limit L such that lim(n→∞) Sₙ = L.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Also: lim(n→∞) Sₙ₋₁ = L (same limit).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> Note that aₙ = Sₙ - Sₙ₋₁.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Taking limits:
+                    <br>lim(n→∞) aₙ = lim(n→∞) [Sₙ - Sₙ₋₁] = L - L = 0
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore lim aₙ = 0. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "CONVERGE ⟹ TERMS → 0"</strong><br>
+                <em>N</em> = <strong>N</strong>ecessary condition
+                <em>C</em> = <strong>C</strong>onvergence
+                <em>T</em> = <strong>T</strong>erms → 0
+                <br><br>
+                <strong>Key Phrase:</strong> <em>"No shrinking terms, no convergence!"</em>
+                <br><strong>Remember:</strong> <em>"aₙ ↛ 0 ⟹ ∑aₙ diverges"</em> (useful contrapositive)
+                <br><strong>Caveat:</strong> <em>"aₙ → 0 does NOT guarantee convergence!"</em> (Harmonic series counterexample)
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> ∑(n/n+1) diverges because lim(n/n+1) = 1 ≠ 0.
+                <br><strong>Counterexample:</strong> The harmonic series ∑(1/n) has lim(1/n) = 0, but it STILL diverges!
+            </div>
+        </div>
+
+        <!-- THEOREM 15 -->
+        <div class="theorem-card" id="theorem15">
+            <div class="theorem-number">15</div>
+            <div class="theorem-title">
+                Geometric Series and Its Character
+                <span class="theorem-badge">Series</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> A geometric series (where each term is a constant multiple of the previous term) converges if and only if the common ratio has absolute value less than 1. If |r| < 1, terms shrink exponentially and sum to a finite value. If |r| ≥ 1, they don't shrink and the sum diverges.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                Geometric Series: ∑(n=0 to ∞) r^n = 1 + r + r² + r³ + ...
+
+                CONVERGENCE CHARACTER:
+                1. If |r| < 1: Converges to S = 1/(1 - r)
+                2. If |r| ≥ 1: Diverges
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof (|r| < 1 Case)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Direct Proof:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> The partial sum is: Sₙ = 1 + r + r² + ... + r^(n-1)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Multiply by (1 - r):
+                    <br>(1 - r)Sₙ = (1 + r + r² + ... + r^(n-1))(1 - r)
+                    <br>= (1 + r + r² + ... + r^(n-1)) - (r + r² + ... + r^n)
+                    <br>= 1 - r^n
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Therefore: Sₙ = (1 - r^n)/(1 - r) for r ≠ 1.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> If |r| < 1, then r^n → 0 as n → ∞.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Thus: lim Sₙ = (1 - 0)/(1 - r) = 1/(1 - r)
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Series converges to 1/(1 - r). ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "|r| < 1 = CONVERGE, |r| ≥ 1 = DIVERGE"</strong><br>
+                <em>Small ratio = shrinking terms = finite sum</em>
+                <br><em>Large ratio = growing terms = infinite sum</em>
+                <br><br>
+                <strong>Formula to Remember:</strong> <em>S = 1/(1-r)</em>
+                <br><strong>Visual:</strong> |r| is like a "shrinking multiplier"—below 1 means it shrinks, above means it grows!
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> ∑(1/2)^n = 1 + 1/2 + 1/4 + 1/8 + ...
+                <br>Here r = 1/2, so |r| < 1. Converges to 1/(1 - 1/2) = 2. ✓
+            </div>
+        </div>
+
+        <!-- THEOREM 16 -->
+        <div class="theorem-card" id="theorem16">
+            <div class="theorem-number">16</div>
+            <div class="theorem-title">
+                The Harmonic Series is Divergent (Verification/Alternative Proof)
+                <span class="theorem-badge">Series</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> Alternative proof that 1 + 1/2 + 1/3 + 1/4 + ... = ∞. We already showed this in Theorem 6, but here's another elegant way to see it: compare it to a related series that's easier to analyze.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                The Harmonic Series ∑(n=1 to ∞) 1/n DIVERGES.
+
+                This is verified/proven using the Integral Test or Comparison Test.
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof (Integral Test Method)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof via Integral Test:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Consider f(x) = 1/x, which is positive, continuous, and decreasing on [1, ∞).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Evaluate the improper integral:
+                    <br>∫₁^∞ (1/x) dx = lim(t→∞) ∫₁^t (1/x) dx = lim(t→∞) [ln(t) - ln(1)] = ∞
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> By the Integral Test: If ∫₁^∞ f(x) dx diverges, then ∑ f(n) diverges.
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> Therefore ∑(1/n) diverges. ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "INTEGRAL TEST + 1/x = ∞"</strong><br>
+                The integral of 1/x is ln(x), which goes to infinity.
+                <br><br>
+                <strong>Key Parallel:</strong> Just like ∫ 1/x dx = ∞, the series ∑ 1/n = ∞.
+                <br><strong>Remember:</strong> <em>"Logarithm diverges ⟹ harmonic diverges"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Intuition:</strong> ∫₁^(100) (1/x) dx = ln(100) ≈ 4.6
+                <br>As we integrate further, ln(x) keeps growing without bound.
+                <br>The series is like adding up this diverging integral!
+            </div>
+        </div>
+
+        <!-- THEOREM 17 -->
+        <div class="theorem-card" id="theorem17">
+            <div class="theorem-number">17</div>
+            <div class="theorem-title">
+                The Fundamental Theorem of Calculus
+                <span class="theorem-badge">Integration</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> Differentiation and integration are inverse operations. The integral of a function's derivative gives you back the original function. And if you want the total accumulated change from a to b, just evaluate the antiderivative at those endpoints and subtract!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                PART 1 (Fundamental Theorem I):
+                If f is continuous on [a, b] and F is an antiderivative of f (F' = f), then:
+                ∫ₐ^b f(x) dx = F(b) - F(a)
+
+                PART 2 (Fundamental Theorem II):
+                If f is continuous on [a, b], then the function:
+                G(x) = ∫ₐ^x f(t) dt is differentiable and G'(x) = f(x)
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof Sketch (Part 1)</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof Idea:</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Let P = {a = x₀ < x₁ < ... < x_n = b} be a partition.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> By the Mean Value Theorem, on each [xᵢ₋₁, xᵢ]:
+                    <br>F(xᵢ) - F(xᵢ₋₁) = F'(cᵢ)(xᵢ - xᵢ₋₁) = f(cᵢ)(xᵢ - xᵢ₋₁)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Sum over all subintervals:
+                    <br>F(b) - F(a) = ∑[F(xᵢ) - F(xᵢ₋₁)] = ∑ f(cᵢ)(xᵢ - xᵢ₋₁)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> The right side is a Riemann sum for ∫ₐ^b f(x) dx.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Taking the limit as mesh → 0:
+                    <br>F(b) - F(a) = ∫ₐ^b f(x) dx
+                </div>
+                <div class="proof-step">
+                    <strong>Conclusion:</strong> This is the formula we wanted! ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "DERIVATIVE AND INTEGRAL UNDO EACH OTHER"</strong><br>
+                <em>d/dx ∫ f = f</em> (taking derivative of integral gives original)
+                <br><em>∫ f' = f</em> (integrating derivative gives original)
+                <br><br>
+                <strong>Computation:</strong> <em>∫ₐ^b f = F(b) - F(a)</em> (evaluate antiderivative at endpoints)
+                <br><strong>Key:</strong> <em>"Reverse operations"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> ∫₀² x² dx
+                <br>Antiderivative: F(x) = x³/3
+                <br>Answer: F(2) - F(0) = 8/3 - 0 = 8/3 ✓
+            </div>
+        </div>
+
+        <!-- THEOREM 18 -->
+        <div class="theorem-card" id="theorem18">
+            <div class="theorem-number">18</div>
+            <div class="theorem-title">
+                Bolzano's Theorem (Generalized Case)
+                <span class="theorem-badge">Continuity</span>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h3>Easy Explanation</h3>
+            </div>
+            <div class="easy-explanation">
+                <strong>Simple Version:</strong> A continuous function doesn't just cross the x-axis (zero)—it takes on ALL values between its starting and ending values. If you go from 5 to 15 continuously, you must pass through 7, 9, 11, and every number in between!
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h3>Formal Definition</h3>
+            </div>
+            <div class="formal-definition">
+                INTERMEDIATE VALUE THEOREM (IVT):
+                Let f be continuous on [a, b]. Let k be ANY value between f(a) and f(b).
+
+                Then: ∃ c ∈ (a, b) such that f(c) = k
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <h3>Proof</h3>
+            </div>
+            <div class="proof-section">
+                <h4>Proof (WLOG f(a) < k < f(b)):</h4>
+                <div class="proof-step">
+                    <strong>Step 1:</strong> Define g(x) = f(x) - k. We want to show ∃ c where g(c) = 0.
+                </div>
+                <div class="proof-step">
+                    <strong>Step 2:</strong> Note:
+                    <br>g(a) = f(a) - k < 0 (since f(a) < k)
+                    <br>g(b) = f(b) - k > 0 (since f(b) > k)
+                </div>
+                <div class="proof-step">
+                    <strong>Step 3:</strong> Function g is continuous on [a, b] (difference of continuous functions).
+                </div>
+                <div class="proof-step">
+                    <strong>Step 4:</strong> By Bolzano's Zero Theorem (Theorem 8):
+                    <br>∃ c ∈ (a, b) where g(c) = 0
+                </div>
+                <div class="proof-step">
+                    <strong>Step 5:</strong> Therefore: f(c) - k = 0, i.e., f(c) = k ✓
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h3>Memory Trick</h3>
+            </div>
+            <div class="memory-trick">
+                <strong>💾 TRICK: "CONTINUOUS FILLS ALL VALUES IN BETWEEN"</strong><br>
+                <em>I</em> = <strong>I</strong>ntermediate Value
+                <em>T</em> = <strong>T</strong>heorem (IVT)
+                <br><br>
+                <strong>Visual:</strong> If you paint a line from A to B continuously, every color between A's and B's color appears somewhere on that line!
+                <br><strong>Key:</strong> <em>"No jumping over values allowed"</em>
+            </div>
+
+            <div class="example-box">
+                <strong>Example:</strong> f(x) = x³ - x on [0, 2]
+                <br>f(0) = 0, f(2) = 6
+                <br>Does f ever equal 3? Yes! By IVT, ∃ c ∈ (0, 2) where f(c) = 3.
+                <br>(In fact, f is continuous and monotonic, so it hits every value between 0 and 6.)
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Summary Section -->
+        <div class="theorem-card">
+            <div class="theorem-title">
+                📊 Quick Summary Table
+            </div>
+            <p style="margin-bottom: 1.5rem;">Here's a quick reference for all 18 theorems:</p>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="background: var(--primary-light); border-bottom: 2px solid var(--primary);">
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">No.</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Theorem</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Key Condition</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Conclusion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">1</td>
+                            <td style="padding: 0.8rem;"><strong>Uniqueness of Limit</strong></td>
+                            <td style="padding: 0.8rem;">Sequence converges</td>
+                            <td style="padding: 0.8rem;">Limit is unique</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">2</td>
+                            <td style="padding: 0.8rem;"><strong>Bounded Sequence</strong></td>
+                            <td style="padding: 0.8rem;">Sequence converges</td>
+                            <td style="padding: 0.8rem;">Sequence is bounded</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">3</td>
+                            <td style="padding: 0.8rem;"><strong>Squeeze Theorem</strong></td>
+                            <td style="padding: 0.8rem;">Sequence squeezed, bounds converge</td>
+                            <td style="padding: 0.8rem;">Middle sequence converges</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">4</td>
+                            <td style="padding: 0.8rem;"><strong>Monotone Sequences</strong></td>
+                            <td style="padding: 0.8rem;">Monotone + bounded</td>
+                            <td style="padding: 0.8rem;">Converges to supremum/infimum</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">5</td>
+                            <td style="padding: 0.8rem;"><strong>Bounded × Infinitesimal</strong></td>
+                            <td style="padding: 0.8rem;">One bounded, one → 0</td>
+                            <td style="padding: 0.8rem;">Product → 0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">6</td>
+                            <td style="padding: 0.8rem;"><strong>Harmonic Diverges</strong></td>
+                            <td style="padding: 0.8rem;">∑(1/n)</td>
+                            <td style="padding: 0.8rem;">Diverges to ∞</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">7</td>
+                            <td style="padding: 0.8rem;"><strong>Non-Neg Series</strong></td>
+                            <td style="padding: 0.8rem;">aₙ ≥ 0</td>
+                            <td style="padding: 0.8rem;">Converges or diverges to ∞ (no oscillation)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">8</td>
+                            <td style="padding: 0.8rem;"><strong>Bolzano (Zeros)</strong></td>
+                            <td style="padding: 0.8rem;">Continuous, f(a)f(b) < 0</td>
+                            <td style="padding: 0.8rem;">∃ c where f(c) = 0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">9</td>
+                            <td style="padding: 0.8rem;"><strong>Derivable → Continuous</strong></td>
+                            <td style="padding: 0.8rem;">f differentiable at x₀</td>
+                            <td style="padding: 0.8rem;">f continuous at x₀</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">10</td>
+                            <td style="padding: 0.8rem;"><strong>Fermat's Theorem</strong></td>
+                            <td style="padding: 0.8rem;">Local extremum, differentiable</td>
+                            <td style="padding: 0.8rem;">f'(x₀) = 0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">11</td>
+                            <td style="padding: 0.8rem;"><strong>Rolle's Theorem</strong></td>
+                            <td style="padding: 0.8rem;">f(a) = f(b), continuous, derivable</td>
+                            <td style="padding: 0.8rem;">∃ c where f'(c) = 0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">12</td>
+                            <td style="padding: 0.8rem;"><strong>Lagrange MVT</strong></td>
+                            <td style="padding: 0.8rem;">Continuous, derivable on (a,b)</td>
+                            <td style="padding: 0.8rem;">∃ c where f'(c) = [f(b)-f(a)]/(b-a)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">13</td>
+                            <td style="padding: 0.8rem;"><strong>Monotonicity Criterion</strong></td>
+                            <td style="padding: 0.8rem;">f'(x) > 0 (or < 0)</td>
+                            <td style="padding: 0.8rem;">f increasing (or decreasing)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">14</td>
+                            <td style="padding: 0.8rem;"><strong>Series Convergence Necessary</strong></td>
+                            <td style="padding: 0.8rem;">Series converges</td>
+                            <td style="padding: 0.8rem;">Terms → 0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">15</td>
+                            <td style="padding: 0.8rem;"><strong>Geometric Series</strong></td>
+                            <td style="padding: 0.8rem;">|r| < 1</td>
+                            <td style="padding: 0.8rem;">Converges to 1/(1-r)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border); background: #f9fafb;">
+                            <td style="padding: 0.8rem;">16</td>
+                            <td style="padding: 0.8rem;"><strong>Harmonic (Alt Proof)</strong></td>
+                            <td style="padding: 0.8rem;">Integral test on 1/x</td>
+                            <td style="padding: 0.8rem;">∑(1/n) diverges</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.8rem;">17</td>
+                            <td style="padding: 0.8rem;"><strong>FTC</strong></td>
+                            <td style="padding: 0.8rem;">F is antiderivative of f</td>
+                            <td style="padding: 0.8rem;">∫ₐ^b f = F(b) - F(a)</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 0.8rem;">18</td>
+                            <td style="padding: 0.8rem;"><strong>IVT (Generalized Bolzano)</strong></td>
+                            <td style="padding: 0.8rem;">f continuous, k between f(a) and f(b)</td>
+                            <td style="padding: 0.8rem;">∃ c where f(c) = k</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Study Tips -->
+        <div class="theorem-card">
+            <div class="theorem-title">
+                🎓 Tips for Exam Success
+            </div>
+            
+            <div class="section-header">
+                <span class="section-icon">✅</span>
+                <h3>What to Focus On</h3>
+            </div>
+            <div style="background: #f0fdf4; border-left: 4px solid var(--success); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <p><strong>1. Name Recognition First:</strong> Look at exam conditions and match them to theorem names. Create flashcards with conditions on one side and names on the other.</p>
+                <p style="margin-top: 1rem;"><strong>2. Proof Strategy:</strong> Don't memorize word-for-word. Understand the LOGIC:
+                    <br>• Assume the hypothesis
+                    <br>• What do we need to show?
+                    <br>• What theorems can help?
+                    <br>• Build the argument step-by-step
+                </p>
+                <p style="margin-top: 1rem;"><strong>3. Use the Memory Tricks:</strong> Create visual associations. Draw diagrams. The quirky mnemonics stick better than formal language.</p>
+                <p style="margin-top: 1rem;"><strong>4. Practice Problems:</strong> For each theorem, work 2-3 practice problems. This trains your brain to recognize when to apply it.</p>
+                <p style="margin-top: 1rem;"><strong>5. Simplify the Language:</strong> During the exam, write proofs in simple language first, then formalize if needed. Clarity beats fancy notation.</p>
+            </div>
+
+            <div class="section-header">
+                <span class="section-icon">🚨</span>
+                <h3>Common Mistakes to Avoid</h3>
+            </div>
+            <div style="background: #fee2e2; border-left: 4px solid var(--danger); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                <p><strong>❌ Don't confuse sufficient and necessary conditions:</strong> Theorem 14 says convergence REQUIRES terms → 0, but terms → 0 doesn't guarantee convergence!</p>
+                <p style="margin-top: 1rem;"><strong>❌ Don't forget the reverse of derivative/integral:</strong> Theorem 9 says derivable ⟹ continuous, NOT continuous ⟹ derivable!</p>
+                <p style="margin-top: 1rem;"><strong>❌ Don't skip the hypotheses:</strong> Bolzano requires continuity AND sign change. Without both, it fails.</p>
+                <p style="margin-top: 1rem;"><strong>❌ Don't oversimplify proofs:</strong> Include the key inequality or limit argument. "It's obvious" won't earn full marks!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>📚 Complete Theorems Study Guide</strong></p>
+        <p>Master these 18 theorems, and you've mastered the foundations of Calculus & Real Analysis! 🚀</p>
+        <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">Last Updated: 2025 | Designed for Exam Success</p>
+    </footer>
+</body>
+</html>
